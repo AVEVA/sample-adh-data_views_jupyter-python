@@ -5,7 +5,7 @@ trigger:
       - master
   paths:
     include:
-      - '/advanced_samples/DataViewWind/Jupyter'
+      - '/'
 
 pr:
   branches:
@@ -13,7 +13,7 @@ pr:
       - master
   paths:
     include:
-      - '/advanced_samples/DataViewWind/Jupyter'
+      - '/'
 
 schedules:
   - cron: '0 0 * * 0'
@@ -23,10 +23,17 @@ schedules:
         - master
     always: true
 
+resources:
+  repositories:
+  - repository: templates
+    type: github
+    name: osisoft/OSI-Samples
+    endpoint: osisoft/OSI-Samples
+
 variables:
-  - template: '/miscellaneous/build_templates/variables.yml'
+  - template: '/miscellaneous/build_templates/variables.yml@templates'
   - name: projPath
-    value: '/advanced_samples/DataViewWind/Jupyter'
+    value: '/'
   - name: CredFile
     value: config.ini
   - name: CredFileLibrary
@@ -34,9 +41,9 @@ variables:
   - name: analysisProject
     value: SDSDataViewJupyter
   - name: bulkUploadprojPath
-    value: '/advanced_samples/BulkUpload/DotNet'
+    value: '/'
   - name: bulkUploadFiles
-    value: '/advanced_samples/BulkUpload/SampleCollections/DataViewWind'
+    value: '/'
   - name: bulkUploadCredFile
     value: appsettings.json
   - name: bulkUploadCredFileLibrary
@@ -53,7 +60,7 @@ jobs:
     pool:
       vmImage: $(imageName)
     steps:
-      - template: '/miscellaneous/build_templates/config.yml'
+      - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
@@ -65,7 +72,7 @@ jobs:
           architecture: 'x64'
         displayName: 'Specify Python version'
 
-      - template: '/miscellaneous/build_templates/config.yml'
+      - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(bulkUploadCredFile)
           fileLibrary: $(bulkUploadCredFileLibrary)
@@ -112,7 +119,7 @@ jobs:
         displayName: 'Publish test results'
         condition: always()
 
-  - template: '/miscellaneous/build_templates/analysis.yml'
+  - template: '/miscellaneous/build_templates/analysis.yml@templates'
     parameters:
       language: jupyter
       useRequirementsTxt: true
