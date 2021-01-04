@@ -2,7 +2,7 @@
 
 **Version:** 1.0.2
 
-[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/DataViewWindJupyter?branchName=master)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=1851&branchName=master)
+[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-data_view_jupyter-jupyter_notebook?repoName=osisoft%2Fsample-ocs-data_view_jupyter-jupyter_notebook&branchName=master)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2616&repoName=osisoft%2Fsample-ocs-data_view_jupyter-jupyter_notebook&branchName=master)
 
 The sample code in this folder demonstrates how to utilize the OCS Data Views to do some basic data analysis using Python Jupyter Notebook. In order to run this sample, you need to have [Python](https://www.python.org/downloads/) installed.
 
