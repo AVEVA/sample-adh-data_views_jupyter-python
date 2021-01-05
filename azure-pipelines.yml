@@ -45,9 +45,9 @@ variables:
   - name: analysisProject
     value: SDSDataViewJupyter
   - name: bulkUploadprojPath
-    value: '/@bulkUpload'
+    value: '/'
   - name: bulkUploadFiles
-    value: '/SampleCollections/DataViewWind@bulkUpload'
+    value: '/SampleCollections/DataViewWind'
   - name: bulkUploadCredFile
     value: appsettings.json
   - name: bulkUploadCredFileLibrary
@@ -64,6 +64,7 @@ jobs:
     pool:
       vmImage: $(imageName)
     steps:
+      - checkout: bulkUpload
       - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(CredFile)
