@@ -29,6 +29,10 @@ resources:
     type: github
     name: osisoft/OSI-Samples
     endpoint: osisoft/OSI-Samples
+  - repository: bulkUpload
+    type: github
+    name: osisoft/sample-ocs-bulk_upload-dotnet
+    endpoint: osisoft/OSI-Samples
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
@@ -41,9 +45,9 @@ variables:
   - name: analysisProject
     value: SDSDataViewJupyter
   - name: bulkUploadprojPath
-    value: '/'
+    value: '/@bulkUpload'
   - name: bulkUploadFiles
-    value: '/'
+    value: '/SampleCollections/DataViewWind@bulkUpload'
   - name: bulkUploadCredFile
     value: appsettings.json
   - name: bulkUploadCredFileLibrary
