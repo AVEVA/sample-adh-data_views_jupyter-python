@@ -1,6 +1,6 @@
 # OCS Data View Data Analysis Sample using Jupyter
 
-**Version:** 1.0.2
+**Version:** 1.0.3
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-data_view_jupyter-jupyter_notebook?repoName=osisoft%2Fsample-ocs-data_view_jupyter-jupyter_notebook&branchName=master)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2616&repoName=osisoft%2Fsample-ocs-data_view_jupyter-jupyter_notebook&branchName=master)
 
