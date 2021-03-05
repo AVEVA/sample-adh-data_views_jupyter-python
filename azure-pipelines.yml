@@ -69,11 +69,6 @@ jobs:
           fileLibrary: $(bulkUploadCredFileLibrary)
           filePath: /bu/BulkUploader
 
-      - template: '/miscellaneous/build_templates/analysis.yml@templates'
-        parameters:
-          skip: eq(variables['Agent.OS'], 'Linux')
-          useRequirementsTxt: true
-
       - script: |
           echo Clean
           dotnet clean
@@ -116,3 +111,8 @@ jobs:
           testRunTitle: '$(Agent.JobName) on $(Agent.OS)'
         displayName: 'Publish test results'
         condition: always()
+
+      - template: '/miscellaneous/build_templates/analysis.yml@templates'
+        parameters:
+          skip: eq(variables['Agent.OS'], 'Linux')
+          useRequirementsTxt: true
