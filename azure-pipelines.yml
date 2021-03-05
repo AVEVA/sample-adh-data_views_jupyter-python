@@ -2,101 +2,91 @@ trigger:
   batch: true
   branches:
     include:
-      - master
-  paths:
-    include:
-      - '/'
+      - main
 
 pr:
   branches:
     include:
-      - master
-  paths:
-    include:
-      - '/'
+      - main
 
 schedules:
   - cron: '0 0 * * 0'
     displayName: Weekly build
     branches:
       include:
-        - master
+        - main
     always: true
 
 resources:
   repositories:
-  - repository: templates
-    type: github
-    name: osisoft/OSI-Samples
-    endpoint: osisoft/OSI-Samples
-  - repository: bulkUpload
-    type: github
-    name: osisoft/sample-ocs-bulk_upload-dotnet
-    endpoint: osisoft/OSI-Samples
+    - repository: templates
+      type: github
+      name: osisoft/OSI-Samples
+      endpoint: osisoft/OSI-Samples
+    - repository: bulkUpload
+      type: github
+      name: osisoft/sample-ocs-bulk_upload-dotnet
+      endpoint: osisoft/OSI-Samples
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
-  - name: projPath
-    value: '/'
   - name: CredFile
     value: config.ini
   - name: CredFileLibrary
     value: product-readiness.sds_python.ini
-  - name: analysisProject
-    value: SDSDataViewJupyter
-  - name: bulkUploadprojPath
-    value: '/'
-  - name: bulkUploadFiles
-    value: '/SampleCollections/DataViewWind'
   - name: bulkUploadCredFile
     value: appsettings.json
   - name: bulkUploadCredFileLibrary
     value: product-readiness.BulkUpload_DataViewWindFarm.json
+  - name: bulkUploadFiles
+    value: '/SampleCollections/DataViewWind'
+  - name: analysisProject
+    value: SDSDataViewJupyter
 
 jobs:
   - job: Tests
     strategy:
       matrix:
         linux:
-          imageName: ubuntu-latest
+          agentOS: Linux
         windows:
-          imageName: windows-latest
+          agentOS: Windows_NT
     pool:
-      vmImage: $(imageName)
+      name: 00-OSIManaged-Containers
+      demands: Agent.OS -equals $(agentOS)
     steps:
       - checkout: bulkUpload
       - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
-          filePath: $(projPath)
-
-      - task: UsePythonVersion@0
-        inputs:
-          versionSpec: '3.6'
-          architecture: 'x64'
-        displayName: 'Specify Python version'
 
       - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(bulkUploadCredFile)
           fileLibrary: $(bulkUploadCredFileLibrary)
-          filePath: $(bulkUploadprojPath)/BulkUploader
+          filePath: /BulkUploader
 
-      - bash: |
+      - script: |
           echo Clean
           dotnet clean
           echo Build
           dotnet build
-          echo copy data
-          cp -r '$(Build.SourcesDirectory)$(bulkUploadFiles)/Data' '$(Build.SourcesDirectory)$(bulkUploadprojPath)/BulkUploader'
-          echo upload
-          dotnet run
-          echo Complete
-        workingDirectory: $(Build.SourcesDirectory)$(bulkUploadprojPath)/BulkUploader
+        workingDirectory: $(Build.SourcesDirectory)/BulkUploader
+        displayName: 'Build BulkUploader'
+
+      - task: CopyFiles@2
+        inputs:
+          sourceFolder: $(Build.SourcesDirectory)$(bulkUploadFiles)/Data
+          contents: '**'
+          targetFolder: $(Build.SourcesDirectory)/BulkUploader
+        displayName: 'Copy bulk data files'
+
+      - script: dotnet run
+        workingDirectory: $(Build.SourcesDirectory)/BulkUploader
         displayName: 'Upload data needed'
 
-      - bash: |
+      - script: |
           echo Install requirements
           pip install -r requirements.txt
           echo Install test tools
@@ -105,26 +95,24 @@ jobs:
           jupyter nbconvert --to script Wind_Turbine_OCS_Data_OCS_Python_Library.ipynb
           python -m pytest --junitxml=junit/test-results.xml ./Wind_Turbine_OCS_Data_OCS_Python_Library.py
           echo Complete
-        workingDirectory: $(Build.SourcesDirectory)$(projPath)/
+        workingDirectory: $(Build.SourcesDirectory)
         displayName: 'Run tests'
 
-      #      - bash: |
-      #          echo cleanup data added
-      #          dotnet run delete
-      #          echo Complete
-      #        workingDirectory: $(Build.SourcesDirectory)$(bulkUploadprojPath)/BulkUploader
+      #      - script: dotnet run delete
+      #        workingDirectory: $(Build.SourcesDirectory)/BulkUploader
       #        displayName: 'Clean up data'
 
       - task: PublishTestResults@2
         inputs:
           testResultsFiles: '**/test-*.xml'
-          searchFolder: '$(Build.SourcesDirectory)$(projPath)/'
+          searchFolder: '$(Build.SourcesDirectory)'
           failTaskOnFailedTests: true
-          testRunTitle: '$(Agent.JobName) on $(imageName)'
+          testRunTitle: '$(Agent.JobName) on $(Agent.OS)'
         displayName: 'Publish test results'
         condition: always()
 
-  - template: '/miscellaneous/build_templates/analysis.yml@templates'
-    parameters:
-      language: jupyter
-      useRequirementsTxt: true
+      - ${{ if eq($(Agent.OS), 'Windows_NT') }}:
+          - template: '/miscellaneous/build_templates/analysis.yml@templates'
+            parameters:
+              skipPolaris: true
+              useRequirementsTxt: true
