@@ -38,8 +38,6 @@ variables:
     value: appsettings.json
   - name: bulkUploadCredFileLibrary
     value: product-readiness.BulkUpload_DataViewWindFarm.json
-  - name: bulkUploadFiles
-    value: '/SampleCollections/DataViewWind'
   - name: analysisProject
     value: SDSDataViewJupyter
 
@@ -58,7 +56,7 @@ jobs:
       - checkout: self
         path: 's'
       - checkout: bulkUpload
-        path: 's/BulkUploader'
+        path: 's/bu'
 
       - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
@@ -69,25 +67,25 @@ jobs:
         parameters:
           fileOriginal: $(bulkUploadCredFile)
           fileLibrary: $(bulkUploadCredFileLibrary)
-          filePath: /BulkUploader
+          filePath: /bu/BulkUploader
 
       - script: |
           echo Clean
           dotnet clean
           echo Build
           dotnet build
-        workingDirectory: $(Build.SourcesDirectory)/BulkUploader
+        workingDirectory: $(Build.SourcesDirectory)/bu/BulkUploader
         displayName: 'Build BulkUploader'
 
       - task: CopyFiles@2
         inputs:
-          sourceFolder: $(Build.SourcesDirectory)$(bulkUploadFiles)/Data
+          sourceFolder: $(Build.SourcesDirectory)/bu/SampleCollections/DataViewWind/Data
           contents: '**'
-          targetFolder: $(Build.SourcesDirectory)/BulkUploader/Data
+          targetFolder: $(Build.SourcesDirectory)/bu/BulkUploader/Data
         displayName: 'Copy bulk data files'
 
       - script: dotnet run
-        workingDirectory: $(Build.SourcesDirectory)/BulkUploader
+        workingDirectory: $(Build.SourcesDirectory)/bu/BulkUploader
         displayName: 'Upload data needed'
 
       - script: |
@@ -117,7 +115,7 @@ jobs:
         condition: always()
 
       - ${{ if eq(variables['Agent.OS'], 'Windows_NT') }}:
-          - template: '/miscellaneous/build_templates/analysis.yml@templates'
-            parameters:
-              skipPolaris: true
-              useRequirementsTxt: true
+        - template: '/miscellaneous/build_templates/analysis.yml@templates'
+          parameters:
+            skipPolaris: true
+            useRequirementsTxt: true
