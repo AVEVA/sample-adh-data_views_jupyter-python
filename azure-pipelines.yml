@@ -111,8 +111,8 @@ jobs:
         displayName: 'Publish test results'
         condition: always()
 
-      ${{ if eq(variables['Agent.OS'], 'Windows_NT') }}:
-        - template: '/miscellaneous/build_templates/analysis.yml@templates'
-          parameters:
-            skipPolaris: true
-            useRequirementsTxt: true
+      - ${{ if eq(variables['agentOS'], 'Windows_NT') }}:
+          - template: '/miscellaneous/build_templates/analysis.yml@templates'
+            parameters:
+              skipPolaris: true
+              useRequirementsTxt: true
