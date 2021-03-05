@@ -69,6 +69,11 @@ jobs:
           fileLibrary: $(bulkUploadCredFileLibrary)
           filePath: /bu/BulkUploader
 
+      - template: '/miscellaneous/build_templates/analysis.yml@templates'
+        parameters:
+          skip: eq(variables['Agent.OS'], 'Linux')
+          useRequirementsTxt: true
+
       - script: |
           echo Clean
           dotnet clean
@@ -87,11 +92,6 @@ jobs:
       - script: dotnet run
         workingDirectory: $(Build.SourcesDirectory)/bu/BulkUploader
         displayName: 'Upload data needed'
-
-      - template: '/miscellaneous/build_templates/analysis.yml@templates'
-        parameters:
-          skip: eq(variables['Agent.OS'], 'Linux')
-          useRequirementsTxt: true
 
       - script: |
           echo Install requirements
