@@ -79,7 +79,7 @@ jobs:
         inputs:
           sourceFolder: $(Build.SourcesDirectory)$(bulkUploadFiles)/Data
           contents: '**'
-          targetFolder: $(Build.SourcesDirectory)/BulkUploader
+          targetFolder: $(Build.SourcesDirectory)/BulkUploader/Data
         displayName: 'Copy bulk data files'
 
       - script: dotnet run
@@ -111,8 +111,8 @@ jobs:
         displayName: 'Publish test results'
         condition: always()
 
-      - ${{ if eq(variables['Agent.OS'], 'Windows_NT') }}:
-          - template: '/miscellaneous/build_templates/analysis.yml@templates'
-            parameters:
-              skipPolaris: true
-              useRequirementsTxt: true
+      ${{ if eq(variables['Agent.OS'], 'Windows_NT') }}:
+        - template: '/miscellaneous/build_templates/analysis.yml@templates'
+          parameters:
+            skipPolaris: true
+            useRequirementsTxt: true
