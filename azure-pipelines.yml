@@ -55,7 +55,11 @@ jobs:
       name: 00-OSIManaged-Containers
       demands: Agent.OS -equals $(agentOS)
     steps:
+      - checkout: self
+        path: 's'
       - checkout: bulkUpload
+        path: 's/BulkUploader'
+
       - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(CredFile)
@@ -113,7 +117,7 @@ jobs:
         condition: always()
 
       - ${{ if eq(variables['Agent.OS'], 'Windows_NT') }}:
-        - template: '/miscellaneous/build_templates/analysis.yml@templates'
-          parameters:
-            skipPolaris: true
-            useRequirementsTxt: true
+          - template: '/miscellaneous/build_templates/analysis.yml@templates'
+            parameters:
+              skipPolaris: true
+              useRequirementsTxt: true
