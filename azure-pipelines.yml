@@ -46,8 +46,9 @@ jobs:
   - job: Tests
     strategy:
       matrix:
-        linux:
-          agentOS: Linux
+        # TODO: Add Linux run when agents are ready
+        # linux:
+        #   agentOS: Linux
         windows:
           agentOS: Windows_NT
     pool:
