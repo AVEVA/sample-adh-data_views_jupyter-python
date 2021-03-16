@@ -114,7 +114,15 @@ jobs:
         displayName: 'Publish test results'
         condition: always()
 
+  - job: Analysis
+    pool:
+      name: 00-OSIManaged-Containers
+      demands: Agent.OS -equals Windows_NT
+    steps:
+      - script: |
+          pip install nbconvert
+          jupyter nbconvert --to script Wind_Turbine_OCS_Data_OCS_Python_Library.ipynb
+
       - template: '/miscellaneous/build_templates/analysis.yml@templates'
         parameters:
-          skip: eq(variables['Agent.OS'], 'Linux')
           useRequirementsTxt: true
