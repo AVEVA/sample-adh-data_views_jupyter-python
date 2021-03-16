@@ -101,10 +101,6 @@ jobs:
           echo Complete
         displayName: 'Run tests'
 
-      #      - script: dotnet run delete
-      #        workingDirectory: $(Build.SourcesDirectory)/BulkUploader
-      #        displayName: 'Clean up data'
-
       - task: PublishTestResults@2
         inputs:
           testResultsFiles: '**/test-*.xml'
