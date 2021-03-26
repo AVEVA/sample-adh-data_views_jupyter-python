@@ -27,7 +27,6 @@ resources:
       type: github
       name: osisoft/sample-ocs-bulk_upload-dotnet
       endpoint: osisoft/OSI-Samples
-      ref: pipelines
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
