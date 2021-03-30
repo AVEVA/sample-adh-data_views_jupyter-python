@@ -1,8 +1,8 @@
 # OCS Data View Data Analysis Sample using Jupyter
 
-**Version:** 1.0.3
+**Version:** 1.0.4
 
-[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-data_view_jupyter-jupyter_notebook?repoName=osisoft%2Fsample-ocs-data_view_jupyter-jupyter_notebook&branchName=master)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2616&repoName=osisoft%2Fsample-ocs-data_view_jupyter-jupyter_notebook&branchName=master)
+[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-data_views_jupyter-python?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=3095&branchName=main)
 
 The sample code in this folder demonstrates how to utilize the OCS Data Views to do some basic data analysis using Python Jupyter Notebook. In order to run this sample, you need to have [Python](https://www.python.org/downloads/) installed.
 
@@ -28,7 +28,7 @@ Can we predict the power output of our wind turbines based on weather forecast d
 
 ### Data Overview
 
-The data we are using is available in our sample-ocs-bulk_upload-dotnet repository SampleCollections [folder](https://github.com/osisoft/sample-ocs-bulk_upload-dotnet/tree/master/SampleCollections/DataViewWind). The steps to upload this data are included in that folder. This sample also skips over the exercise of creating the data view, this is included in the data that you can upload. To see how to create a Data View programmatically, please look at our other samples [here](https://github.com/osisoft/OSI-Samples-OCS/blob/master/docs/DATA_VIEWS_README.md).
+The data we are using is available in our sample-ocs-bulk_upload-dotnet repository SampleCollections [folder](https://github.com/osisoft/sample-ocs-bulk_upload-dotnet/tree/main/SampleCollections/DataViewWind). The steps to upload this data are included in that folder. This sample also skips over the exercise of creating the data view, this is included in the data that you can upload. To see how to create a Data View programmatically, please look at our other samples [here](https://github.com/osisoft/OSI-Samples-OCS/blob/main/docs/DATA_VIEWS_README.md).
 
 This sample data is similar to what you might have from a site where the data has unexpected values and not every turbine behaves exactly the same. The data is only for 1 day. Repeating this exercise but using more days of data would give you a better prediction.
 
@@ -66,5 +66,5 @@ The automated tests assume that the data is already lodaded. The steps to load t
 
 ---
 
-For the main OCS samples page on master [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
-For the main OSIsoft samples page on master [ReadMe](https://github.com/osisoft/OSI-Samples)
+For the main OCS samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
+For the main OSIsoft samples page [ReadMe](https://github.com/osisoft/OSI-Samples)
