@@ -1,9 +1,9 @@
-ocs_sample_library_preview>=0.1.16_preview
+ocs_sample_library_preview>=0.1.17rc0
 jupyter>=1.0.0
-pandas>=1.2.1
-numpy>=1.19.5
-urllib3>=1.26.3
-matplotlib>=3.3.3
+pandas>=1.2.4
+numpy>=1.20.2
+urllib3>=1.26.4
+matplotlib>=3.4.1
 scikit-learn>=0.24.1
-scipy>=1.6.0
+scipy>=1.6.2
 requests>=2.25.1
