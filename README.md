@@ -1,10 +1,12 @@
 # OCS Data View Data Analysis Sample using Jupyter
 
-**Version:** 1.0.5
+**Version:** 1.0.6
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-data_views_jupyter-python?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=3095&branchName=main)
 
 The sample code in this folder demonstrates how to utilize the OCS Data Views to do some basic data analysis using Python Jupyter Notebook. In order to run this sample, you need to have [Python](https://www.python.org/downloads/) installed.
+
+Developed against Python 3.9.1.
 
 ## About the Sample
 
