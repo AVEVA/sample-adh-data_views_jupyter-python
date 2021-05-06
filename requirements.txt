@@ -1,4 +1,4 @@
-ocs_sample_library_preview>=0.1.17rc0
+ocs_sample_library_preview>=0.2.0rc0
 jupyter>=1.0.0
 pandas>=1.2.4
 numpy>=1.20.2
