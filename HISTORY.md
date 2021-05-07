@@ -1,5 +1,9 @@
 # Version History
 
+## 1.0.7 / 2021-05-07
+
+- Remove temporary workaround for Python 3.9 on internal Linux agent
+
 ## 1.0.6 / 2021-05-03
 
 - Updated sample to use ocs_sample_library_preview 0.2.0_preview
