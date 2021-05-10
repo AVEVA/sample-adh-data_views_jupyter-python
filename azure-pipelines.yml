@@ -89,15 +89,11 @@ jobs:
         workingDirectory: $(Build.SourcesDirectory)/bu/BulkUploader
         displayName: 'Upload data needed'
 
-      - script: sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.9 2
-        displayName: 'Alias Python 3.9'
-        condition: eq(variables['Agent.OS'], 'Linux')
-
       - script: |
           echo Install requirements
-          python -m pip install -r requirements.txt
+          pip install -r requirements.txt
           echo Install test tools
-          python -m pip install -r test-requirements.txt
+          pip install -r test-requirements.txt
           echo Export notebook
           python -m jupyter nbconvert --to script Wind_Turbine_OCS_Data_OCS_Python_Library.ipynb
           echo Run tests
