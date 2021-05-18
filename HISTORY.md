@@ -1,5 +1,9 @@
 # Version History
 
+## 1.0.8 / 2021-05-18
+
+- Updated dependencies
+
 ## 1.0.7 / 2021-05-07
 
 - Remove temporary workaround for Python 3.9 on internal Linux agent
