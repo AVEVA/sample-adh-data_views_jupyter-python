@@ -2,7 +2,7 @@
 
 ## 1.0.8 / 2021-05-18
 
-- Updated ocs_sample_library_preview to use v1 data views endpoint
+- Updated dependencies
 
 ## 1.0.7 / 2021-05-07
 
