@@ -1,2 +1,2 @@
-nbconvert>=6.0.7
+nbconvert>=6.1.0
 pytest>=6.2.4

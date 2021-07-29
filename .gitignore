@@ -140,6 +140,9 @@ cython_debug/
 # VSCode files
 .vscode/
 
+# JUnit test results
+/junit
+
 # Credential Config Files
 product-readiness.*
 config.ini
