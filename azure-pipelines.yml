@@ -30,14 +30,6 @@ resources:
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
-  - name: CredFile
-    value: config.ini
-  - name: CredFileLibrary
-    value: product-readiness.sds_python.ini
-  - name: bulkUploadCredFile
-    value: appsettings.json
-  - name: bulkUploadCredFileLibrary
-    value: product-readiness.BulkUpload_DataViewWindFarm.json
   - name: analysisProject
     value: SDSDataViewJupyter
 
@@ -59,16 +51,9 @@ jobs:
       - checkout: bulkUpload
         path: 's/bu'
 
-      - template: '/miscellaneous/build_templates/config.yml@templates'
+      - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          fileOriginal: $(CredFile)
-          fileLibrary: $(CredFileLibrary)
-
-      - template: '/miscellaneous/build_templates/config.yml@templates'
-        parameters:
-          fileOriginal: $(bulkUploadCredFile)
-          fileLibrary: $(bulkUploadCredFileLibrary)
-          filePath: /bu/BulkUploader
+          secrets: 'TenantId, NamespaceId, ClientId, ClientSecret'
 
       - script: |
           echo Clean
