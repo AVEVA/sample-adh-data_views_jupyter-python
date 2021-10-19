@@ -45,6 +45,9 @@ jobs:
     pool:
       name: 00-OSIManaged-Containers
       demands: Agent.OS -equals $(agentOS)
+    variables:
+      - name: NamespaceId
+        value: Derek
     steps:
       - checkout: self
         path: 's'
@@ -53,7 +56,7 @@ jobs:
 
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          secrets: 'TenantId, NamespaceId, ClientId, ClientSecret'
+          secrets: 'TenantId, ClientId, ClientSecret'
 
       - script: |
           echo Clean
