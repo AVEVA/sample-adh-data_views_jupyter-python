@@ -72,10 +72,12 @@ jobs:
           contents: '**'
           targetFolder: $(Build.SourcesDirectory)/bu/BulkUploader/Data
         displayName: 'Copy bulk data files'
+        condition: eq('$(upload)', true)
 
       - script: dotnet run
         workingDirectory: $(Build.SourcesDirectory)/bu/BulkUploader
         displayName: 'Upload data needed'
+        condition: eq('$(upload)', true)
 
       - script: |
           echo Install requirements
