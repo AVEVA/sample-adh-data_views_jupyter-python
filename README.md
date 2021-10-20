@@ -36,22 +36,20 @@ This sample data is similar to what you might have from a site where the data ha
 
 ### Setting up the OCS connection
 
-- In the `Jupyter` folder, populate the values of `config.placeholder.ini` with your own system configuration. Before editing, rename this file to `config.ini`. This repository's `.gitignore` rules should prevent the file from ever being checked in to any fork or branch, to ensure credentials are not compromised.
+- In the `Jupyter` folder, populate the values of `appsettings.placeholder.json` with your own system configuration. Before editing, rename this file to `appsettings.json`. This repository's `.gitignore` rules should prevent the file from ever being checked in to any fork or branch, to ensure credentials are not compromised.
 
 For example:
 
-```ini
-[Configurations]
-Namespace = Samples
-
-[Access]
-Resource = https://dat-b.osisoft.com
-Tenant = REPLACE_WITH_TENANT_ID
-ApiVersion = v1
-
-[Credentials]
-ClientId = REPLACE_WITH_APPLICATION_IDENTIFIER
-ClientSecret = REPLACE_WITH_APPLICATION_SECRET
+```json
+{
+  "Resource": "https://dat-b.osisoft.com",
+  "ApiVersion": "v1",
+  "TenantId": "PLACEHOLDER_REPLACE_WITH_TENANT_ID",
+  "NamespaceId": "PLACEHOLDER_REPLACE_WITH_NAMESPACE_ID",
+  "CommunityId": null,
+  "ClientId": "PLACEHOLDER_REPLACE_WITH_APPLICATION_IDENTIFIER",
+  "ClientSecret": "PLACEHOLDER_REPLACE_WITH_APPLICATION_SECRET"
+}
 ```
 
 ### Running Jupyter Notebook
