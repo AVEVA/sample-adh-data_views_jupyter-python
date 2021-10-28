@@ -1,5 +1,9 @@
 # Version History
 
+## 1.0.16 / 2021-10-20
+
+- Updated dependencies
+
 ## 1.0.15 / 2021-10-19
 
 - Update pipelines to use Azure Key Vault for secrets
