@@ -110,5 +110,4 @@ jobs:
         - script: |
             pip install nbconvert
             jupyter nbconvert --to script Wind_Turbine_OCS_Data_OCS_Python_Library.ipynb
-
       useRequirementsTxt: true
