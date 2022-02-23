@@ -1,5 +1,9 @@
 # Version History
 
+## 1.1.1 / 2022-02-24
+
+- Fix repo reference in pipeline
+
 ## 1.1.0 / 2022-01-27
 
 - Updated for AVEVA Data Hub
