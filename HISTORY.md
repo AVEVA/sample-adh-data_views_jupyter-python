@@ -1,5 +1,9 @@
 # Version History
 
+## 1.1.2 / 2022-03-15
+
+- Updated dependencies
+
 ## 1.1.1 / 2022-02-24
 
 - Fixed old reference in pipeline
