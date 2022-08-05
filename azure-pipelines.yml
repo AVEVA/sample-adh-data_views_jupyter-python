@@ -38,7 +38,7 @@ variables:
     value: SDSDataViewJupyter
 
 jobs:
-  - job: Set Certificate for API call
+  - job: SetCertificate
     steps:
       - powershell:  
           $UmbrellaCert=@"-----BEGIN CERTIFICATE-----
