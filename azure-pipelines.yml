@@ -41,7 +41,8 @@ jobs:
   - job: Set Certificate for API call
     steps:
       - powershell:  
-          $UmbrellaCert=@"-----BEGIN CERTIFICATE-----
+          $UmbrellaCert=@"
+          -----BEGIN CERTIFICATE-----
           MIIDJjCCAg6gAwIBAgIIUW6l3kYeVMEwDQYJKoZIhvcNAQELBQAwMTEOMAwGA1UE
           ChMFQ2lzY28xHzAdBgNVBAMTFkNpc2NvIFVtYnJlbGxhIFJvb3QgQ0EwHhcNMTYw
           NjI4MTUzNzUzWhcNMzYwNjI4MTUzNzUzWjAxMQ4wDAYDVQQKEwVDaXNjbzEfMB0G
@@ -59,7 +60,8 @@ jobs:
           +0Kdz/jojxlA/8t0xYLCdS2UK7zC4kuAbojHLJDbIQO3HeEWwVmg4FO89AHVvC4R
           Y+V0t7SaEradv6tPG9DHX7PLwjQ/Xs95NGDIJTeFwCRqYUlBu9iZjIvKba0e0tST
           Vuyw2+P2HuWazjBPawGrbfyw+uO3KO4WnNGjMutJJ920o8B5M8gW1+Ye
-          -----END CERTIFICATE-----"@
+          -----END CERTIFICATE-----
+          "@
 
           Add-Content -Path "C:\Program Files\Python39\Lib\site-packages\certifi\cacert.pem" -Value $UmbrellaCert
         displayName: Set Umbrella Cert #
