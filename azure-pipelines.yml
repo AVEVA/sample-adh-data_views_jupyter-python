@@ -41,7 +41,8 @@ jobs:
   - job: SetCertificate
     steps:
       - powershell:  
-          $UmbrellaCert = @"
+          $UmbrellaCert = 
+          @"
           -----BEGIN CERTIFICATE-----
           MIIDJjCCAg6gAwIBAgIIUW6l3kYeVMEwDQYJKoZIhvcNAQELBQAwMTEOMAwGA1UE
           ChMFQ2lzY28xHzAdBgNVBAMTFkNpc2NvIFVtYnJlbGxhIFJvb3QgQ0EwHhcNMTYw
