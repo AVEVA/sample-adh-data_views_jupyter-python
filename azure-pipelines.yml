@@ -38,12 +38,6 @@ variables:
     value: SDSDataViewJupyter
 
 jobs:
-  - job: SetCertificate
-    steps:
-      - task: PowerShell@2
-        inputs:
-          targetType: 'filePath'
-          filePath: './cert.ps1'
   - job: Tests
     strategy:
       maxParallel: 1 # Avoid conflicts in ADH
@@ -59,6 +53,14 @@ jobs:
       - name: NamespaceId
         value: Derek
     steps:
+      - task: PowerShell@2
+        inputs:
+          targetType: 'filePath'
+          filePath: './cert.ps1'
+        when: 
+          all:
+            agentOS: 'equals(Windows_NT)'
+
       - checkout: self
         path: 's'
       - checkout: bulkUpload
