@@ -39,6 +39,7 @@ variables:
 
 jobs:
   - job: Tests
+    condition: ne(variables['Build.Reason'], 'Schedule')
     strategy:
       maxParallel: 1 # Avoid conflicts in ADH
       matrix:
