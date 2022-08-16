@@ -57,7 +57,7 @@ jobs:
         inputs:
           targetType: 'filePath'
           filePath: './cert.ps1'
-        condition: eq($(agentOS), 'Windows_NT')
+        condition: eq(variables['agentOS'], 'Windows_NT')
         displayName: 'Set Cert'
 
       - checkout: self
