@@ -57,12 +57,19 @@ jobs:
       - task: PowerShell@2
         inputs:
           targetType: 'inline'
-          script: 'dir .\sample-adh-data_views_jupyter-python\'
+          script: 'dir'
+          workingDirectory: '$(Build.SourcesDirectory)'
+
+      - task: PowerShell@2
+        inputs:
+          targetType: 'inline'
+          script: 'dir sample-adh-data_views_jupyter-python'
           workingDirectory: '$(Build.SourcesDirectory)'
           
       - task: PowerShell@2
         inputs:
-          filePath: '$(Build.SourcesDirectory)\sample-adh-data_views_jupyter-python\cert.ps1'
+          filePath: 'sample-adh-data_views_jupyter-python\cert.ps1'
+          workingDirectory: '$(Build.SourcesDirectory)'
         condition: eq(variables['agentOS'], 'Windows_NT')
         displayName: 'Set Cert'
 
