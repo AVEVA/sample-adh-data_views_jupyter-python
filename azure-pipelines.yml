@@ -58,10 +58,11 @@ jobs:
       - checkout: bulkUpload
         path: 's/bu'
 
-      - task: PythonScript@0
+      - task: PowerShell@2
         inputs:
-          scriptSource: 'inline'
+          targetType: 'inline'
           script: 'pip install requests'
+          workingDirectory: '$(Build.SourcesDirectory)'
           
       - task: PowerShell@2
         inputs:
