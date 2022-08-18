@@ -53,30 +53,23 @@ jobs:
       - name: NamespaceId
         value: Derek
     steps:
+      - checkout: self
+        path: 's'
+      - checkout: bulkUpload
+        path: 's/bu'
 
       - task: PowerShell@2
         inputs:
           targetType: 'inline'
           script: 'dir'
-          workingDirectory: '$(Build.SourcesDirectory)'
+          workingDirectory: '$(Build.SourcesDirectory)/s'
 
       - task: PowerShell@2
         inputs:
-          targetType: 'inline'
-          script: 'dir sample-adh-data_views_jupyter-python'
-          workingDirectory: '$(Build.SourcesDirectory)'
-          
-      - task: PowerShell@2
-        inputs:
-          filePath: 'sample-adh-data_views_jupyter-python\cert.ps1'
-          workingDirectory: '$(Build.SourcesDirectory)'
+          filePath: '$(Build.SourcesDirectory)/s/cert.ps1'
         condition: eq(variables['agentOS'], 'Windows_NT')
         displayName: 'Set Cert'
 
-      - checkout: self
-        path: 's'
-      - checkout: bulkUpload
-        path: 's/bu'
 
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
