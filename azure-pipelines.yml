@@ -63,13 +63,14 @@ jobs:
           targetType: 'inline'
           script: 'pip install requests'
           workingDirectory: '$(Build.SourcesDirectory)'
+        condition: eq(variables['agentOS'], 'Windows_NT')
+        displayName: Install Requests
 
       - task: PowerShell@2
         inputs:
           filePath: '$(Build.SourcesDirectory)/configure_cert.ps1'
         condition: eq(variables['agentOS'], 'Windows_NT')
-        displayName: 'Set Cert'
-
+        displayName: 'Configure Umbrella Certificate'
 
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
