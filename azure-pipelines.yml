@@ -53,10 +53,17 @@ jobs:
       - name: NamespaceId
         value: Derek
     steps:
+
       - task: PowerShell@2
         inputs:
-          targetType: 'filePath'
-          filePath: '$(Build.SourcesDirectory)/cert.ps1'
+          targetType: 'inline'
+          script: 'dir'
+          workingDirectory: '$(Build.SourcesDirectory)'
+          
+      - task: PowerShell@2
+        inputs:
+          filePath: '\cert.ps1'
+          workingDirectory: '$(Build.SourcesDirectory)'
         condition: eq(variables['agentOS'], 'Windows_NT')
         displayName: 'Set Cert'
 
