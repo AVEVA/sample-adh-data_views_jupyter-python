@@ -36,6 +36,11 @@ variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
   - name: analysisProject
     value: SDSDataViewJupyter
+  - template: '/miscellaneous/build_templates/variables.yml@templates'
+  - name: CerFile
+    value: CiscoUmbrellaRoot.cer
+  - name: CerFileLibrary
+    value: CiscoUmbrellaRoot.cer
 
 jobs:
   - job: Tests
@@ -57,6 +62,11 @@ jobs:
         path: 's'
       - checkout: bulkUpload
         path: 's/bu'
+
+      - template: '/miscellaneous/build_templates/config.yml@templates'
+        parameters:
+          fileOriginal: $(CerFile)
+          fileLibrary: $(CerFileLibrary)
 
       - task: PowerShell@2
         inputs:
