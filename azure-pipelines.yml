@@ -57,9 +57,6 @@ jobs:
     pool:
       name: ${{ parameters.pool }}
       demands: ${{ parameters.containerDemands }}
-    variables:
-      - name: NamespaceId
-        value: Derek
     steps:
       - checkout: self
         path: 's'
@@ -68,7 +65,7 @@ jobs:
 
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          secrets: 'TenantId, ClientId, ClientSecret, Resource'
+          secrets: 'TenantId, NamespaceId, ClientId, ClientSecret, Resource'
 
       - script: |
           echo Clean
