@@ -29,7 +29,7 @@ resources:
       endpoint: AVEVA
     - repository: bulkUpload
       type: github
-      name: osisoft/sample-adh-bulk_upload-dotnet
+      name: AVEVA/sample-adh-bulk_upload-dotnet
       endpoint: AVEVA
 
 variables:
