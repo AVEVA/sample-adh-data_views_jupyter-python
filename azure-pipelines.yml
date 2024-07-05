@@ -93,9 +93,9 @@ jobs:
           echo Install test tools
           pip install -r test-requirements.txt
           echo Export notebook
-          python -m jupyter nbconvert --to script Wind_Turbine_ADH_Data_ADH_Python_Library.ipynb
+          python -m jupyter nbconvert --to script Wind_Turbine_Cds_Data_Cds_Python_Library.ipynb
           echo Run tests
-          python -m pytest --junit-xml=junit/test-results.xml ./Wind_Turbine_ADH_Data_ADH_Python_Library.py
+          python -m pytest --junit-xml=junit/test-results.xml ./Wind_Turbine_Cds_Data_Cds_Python_Library.py
           echo Complete
         displayName: 'Run tests'
 
@@ -113,5 +113,5 @@ jobs:
       buildSteps:
         - script: |
             pip install nbconvert
-            jupyter nbconvert --to script Wind_Turbine_ADH_Data_ADH_Python_Library.ipynb
+            jupyter nbconvert --to script Wind_Turbine_Cds_Data_Cds_Python_Library.ipynb
       useRequirementsTxt: true
