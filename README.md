@@ -1,16 +1,16 @@
-# ADH Data View Data Analysis Sample using Jupyter
+# Cds Data View Data Analysis Sample using Jupyter
 
 **Version:** 1.1.7
 
-[![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-data_views_jupyter-python?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=3095&branchName=main)
+[![Build Status](https://dev.azure.com/AVEVA-VSTS/Cloud%20Platform/_apis/build/status%2Fproduct-readiness%2FADH%2FAVEVA.sample-adh-data_views_jupyter-python?repoName=AVEVA%2Fsample-adh-data_views_jupyter-python&branchName=main)](https://dev.azure.com/AVEVA-VSTS/Cloud%20Platform/_build/latest?definitionId=16138&repoName=AVEVA%2Fsample-adh-data_views_jupyter-python&branchName=main)
 
-The sample code in this folder demonstrates how to utilize the ADH Data Views to do some basic data analysis using Python Jupyter Notebook. In order to run this sample, you need to have [Python](https://www.python.org/downloads/) installed.
+The sample code in this folder demonstrates how to utilize the Cds Data Views to do some basic data analysis using Python Jupyter Notebook. In order to run this sample, you need to have [Python](https://www.python.org/downloads/) installed.
 
 Developed against Python 3.9.1.
 
 ## About the Sample
 
-This sample is intended to show you how you can use an ADH Data View to bring your data from ADH into Jupyter and easily into Pandas to do machine learning. Using an ADH Data View allows you to configure the data you want, in the way you want it, and not have to do as much client side processing of the data. This is a basic sample that shows you a possible way to do machine learning and a possible outcome of looking at the data. This is not a guide to Pandas or machine learning.
+This sample is intended to show you how you can use an Cds Data View to bring your data from Cds into Jupyter and easily into Pandas to do machine learning. Using an Cds Data View allows you to configure the data you want, in the way you want it, and not have to do as much client side processing of the data. This is a basic sample that shows you a possible way to do machine learning and a possible outcome of looking at the data. This is not a guide to Pandas or machine learning.
 
 ## Background and Problem
 
@@ -34,7 +34,7 @@ The data we are using is available in our sample-ocs-bulk_upload-dotnet reposito
 
 This sample data is similar to what you might have from a site where the data has unexpected values and not every turbine behaves exactly the same. The data is only for 1 day. Repeating this exercise but using more days of data would give you a better prediction.
 
-### Setting up the ADH connection
+### Setting up the Cds connection
 
 - In the `Jupyter` folder, populate the values of `appsettings.placeholder.json` with your own system configuration. Before editing, rename this file to `appsettings.json`. This repository's `.gitignore` rules should prevent the file from ever being checked in to any fork or branch, to ensure credentials are not compromised.
 
@@ -54,7 +54,7 @@ For example:
 
 ### Running Jupyter Notebook
 
-Open a terminal and type in `jupyter notebook`. This will open a browser window. Navigate to the cloned repository and open up `Wind_Turbine_ADH_Data_ADH_Python_Library.ipynb`. Run the cells one by one and you can see the output in browser itself.
+Open a terminal and type in `jupyter notebook`. This will open a browser window. Navigate to the cloned repository and open up `Wind_Turbine_Cds_Data_Cds_Python_Library.ipynb`. Run the cells one by one and you can see the output in browser itself.
 
 ### Test Jupyter Notebook
 
@@ -66,5 +66,5 @@ The automated tests assume that the data is already lodaded. The steps to load t
 
 ---
 
-For the main ADH samples page [ReadMe](https://github.com/osisoft/OSI-Samples-OCS)  
-For the main AVEVA samples page [ReadMe](https://github.com/osisoft/OSI-Samples)
+For the main Cds samples page [ReadMe](https://github.com/AVEVA/AVEVA-Samples-CloudOperations)  
+For the main AVEVA samples page [ReadMe](https://github.com/AVEVA/AVEVA-Samples)
