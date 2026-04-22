@@ -1,6 +1,6 @@
 adh-sample-library-preview>=0.7.5rc0
 jupyter>=1.0.0
-pandas>=1.4.2
+pandas>=3.0.2
 numpy>=1.22.4
 urllib3>=1.26.9
 matplotlib>=3.5.2
